@@ -92,8 +92,9 @@ Vagrant.configure(2) do |config|
     fi
 
     sudo add-apt-repository -y 'ppa:ondrej/php-7.0'
+    sudo add-apt-repository -y 'ppa:evarlast/golang1.5'
     sudo apt-get update && sudo apt-get -y upgrade
-    sudo apt-get -y install nginx php7.0 php7.0-fpm php-mysql php-curl php-gd php-json php-opcache
+    sudo apt-get -y install nginx php7.0 php7.0-fpm php-mysql php-curl php-gd php-json php-opcache golang
 
     sudo rm /etc/nginx/sites-enabled/default
     sudo cp -f /vagrant/nginx_vhost /etc/nginx/sites-available/
