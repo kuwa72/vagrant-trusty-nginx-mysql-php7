@@ -88,7 +88,7 @@ Vagrant.configure(2) do |config|
 
     if [ -x "$(which brew)" ];then
         echo "Install linuxbrew packages"
-        yes | brew install pkg-config cocot ctags curl wget fish zsh git global jq leiningen lv nkf ocaml rbenv ruby-build tig the_silver_searcher vim zsh zsh-completions zsh-lovers
+        yes | brew install pkg-config cocot ctags curl wget fish zsh git global jq leiningen lv nkf ocaml rbenv ruby-build tig the_silver_searcher vim zsh zsh-completions zsh-lovers npm
     fi
 
     sudo add-apt-repository -y 'ppa:ondrej/php-7.0'
