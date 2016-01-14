@@ -61,9 +61,18 @@ Vagrant.configure(2) do |config|
   #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
   # end
 
+  config.cache.scope = :box
+
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
+  config.vm.provision "itamae" do |config|
+    config.sudo = true
+
+    config.recipes = [ "./recipe.rb" ]
+    config.json = './node.json'
+  end
+=begin
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     whoami
     
@@ -104,4 +113,5 @@ Vagrant.configure(2) do |config|
     sudo service nginx restart
 
     SHELL
+=end
 end
