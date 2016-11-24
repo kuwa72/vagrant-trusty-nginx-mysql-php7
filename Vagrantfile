@@ -61,7 +61,7 @@ Vagrant.configure(2) do |config|
   #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
   # end
 
-  config.cache.scope = :box
+  #config.cache.scope = :box
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
@@ -75,7 +75,7 @@ Vagrant.configure(2) do |config|
 =begin
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     whoami
-    
+
     echo "Update repository to closest server"
     sudo apt-add-repository 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main restricted universe multiverse'
     sudo apt-add-repository 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main restricted universe multiverse'
