@@ -72,46 +72,4 @@ Vagrant.configure(2) do |config|
     config.recipes = [ "./recipe.rb" ]
     config.json = './node.json'
   end
-=begin
-  config.vm.provision "shell", privileged: false, inline: <<-SHELL
-    whoami
-
-    echo "Update repository to closest server"
-    sudo apt-add-repository 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main restricted universe multiverse'
-    sudo apt-add-repository 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main restricted universe multiverse'
-    sudo apt-add-repository 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-backports main restricted universe multiverse'
-    sudo apt-add-repository 'deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-security main restricted universe multiverse'
-
-    echo "Update packages"
-    sudo apt-get update && sudo apt-get -y upgrade
-    sudo apt-get -y install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev libx11-dev gettext
-
-    if [ -x "$(which brew)" ];then
-        :
-    else
-        echo "Install linuxbrew"
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
-        cat /vagrant/linuxbrew_env > ~/.bash_profile
-        source ~/.bash_profile
-    fi
-
-    if [ -x "$(which brew)" ];then
-        echo "Install linuxbrew packages"
-        yes | brew install pkg-config cocot ctags curl wget fish zsh git global jq leiningen lv nkf ocaml rbenv ruby-build tig the_silver_searcher vim zsh zsh-completions zsh-lovers npm
-    fi
-
-    sudo add-apt-repository -y 'ppa:ondrej/php-7.0'
-    sudo add-apt-repository -y 'ppa:evarlast/golang1.5'
-    sudo apt-get update && sudo apt-get -y upgrade
-    sudo apt-get -y install nginx php7.0 php7.0-fpm php-mysql php-curl php-gd php-json php-opcache golang
-
-    sudo rm /etc/nginx/sites-enabled/default
-    sudo cp -f /vagrant/nginx_vhost /etc/nginx/sites-available/
-    sudo ln -f -s /etc/nginx/sites-available/nginx_vhost /etc/nginx/sites-enabled/default
-
-    sudo update-rc.d apache stop
-    sudo service nginx restart
-
-    SHELL
-=end
 end
